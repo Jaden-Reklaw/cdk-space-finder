@@ -1,6 +1,16 @@
-exports.main = async function(event, context) {
-    return {
+import { APIGatewayProxyEvent, APIGatewayProxyResult, Context } from "aws-lambda";
+import { v4 } from 'uuid'
+
+export const handler = async (event: APIGatewayProxyEvent, context: Context): Promise<APIGatewayProxyResult> => {
+    
+    const resposne: APIGatewayProxyResult = {
         statusCode: 200,
-        body: JSON.stringify(`Hello, reading from ${process.env.TABLE_NAME}`)
+        headers: {
+            contentType: 'application/json'
+        },
+        body: JSON.stringify({message: 'Hello from Lambda TypeScript, this is the id: ' + v4()})
     }
+    console.log(event);
+    
+    return resposne;
 }
