@@ -1,4 +1,21 @@
 GET https://ho8l75g8qf.execute-api.us-east-2.amazonaws.com/prod/spaces
 ###
-POST https://ho8l75g8qf.execute-api.us-east-2.amazonaws.com/prod/spaces
+
+GET https://ho8l75g8qf.execute-api.us-east-2.amazonaws.com/prod/spaces?id=78294228-bbf1-41c2-92ce-4c9217d4d1db
 ###
+
+POST https://ho8l75g8qf.execute-api.us-east-2.amazonaws.com/prod/spaces
+content-type: application/json
+
+{ "location": "MINNESOTA" }
+###
+
+PUT https://ho8l75g8qf.execute-api.us-east-2.amazonaws.com/prod/spaces?id=7046e411-ad34-4b2d-8af4-9083782257b2
+content-type: application/json
+
+{ "location": "LONDON" }
+###
+
+DELETE https://ho8l75g8qf.execute-api.us-east-2.amazonaws.com/prod/spaces?id=7046e411-ad34-4b2d-8af4-9083782257b2
+###
+
