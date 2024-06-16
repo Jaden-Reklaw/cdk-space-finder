@@ -12,8 +12,8 @@ async function testAuth() {
     console.log("id token", idToken)
     console.log("access token", accessToken)
     
-    //how do I get the jwt token from the session?
-    return idToken;
+    
+    return idToken.toString();
 }
 
 testAuth();

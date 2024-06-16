@@ -13,6 +13,7 @@ export class AuthStack extends Stack {
 
         this.createUserPool();
         this.createUserPoolClient();
+        this.createAdminsGroup();
     }
 
     private createUserPool() {
@@ -28,6 +29,7 @@ export class AuthStack extends Stack {
             value: this.userPool.userPoolId
         });
     }
+
     private createUserPoolClient() {
         this.userPoolClient = this.userPool.addClient('SpaceUserPoolClient', {
             authFlows: {
@@ -41,5 +43,12 @@ export class AuthStack extends Stack {
         new CfnOutput(this, 'SpaceUserPoolClientId', {
             value: this.userPoolClient.userPoolClientId
         });
+    }
+
+    private createAdminsGroup() {
+        new CfnUserPoolGroup(this, 'SpaceAdmins', {
+            userPoolId: this.userPool.userPoolId,
+            groupName: 'admins'
+        })
     }
 }

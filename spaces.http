@@ -1,25 +1,28 @@
-
-
-
-GET https://ho8l75g8qf.execute-api.us-east-2.amazonaws.com/prod/spaces
-Authorization: 
+@url = https://ho8l75g8qf.execute-api.us-east-2.amazonaws.com/prod/spaces
+@jwt = eyJraWQiOiIyXC96MnlZWTNcL1wvNEU0V1lVSTk0T0N4K05ReGZGZXYrNEFrSkZUWllTUkk4PSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI4MTBiYTU0MC04MDcxLTcwMjctNmM2Zi0wZGNjM2UwYzhmOGEiLCJjb2duaXRvOmdyb3VwcyI6WyJhZG1pbnMiXSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMi5hbWF6b25hd3MuY29tXC91cy1lYXN0LTJfOHlyS1Rxc2J2IiwiY29nbml0bzp1c2VybmFtZSI6ImF4ZWwxIiwib3JpZ2luX2p0aSI6IjQwYTNjYThlLWE2ZTMtNDMwOS05ZGEyLTRmZmNlZWM2MWI2YyIsImF1ZCI6IjZwaHUwazZsNGN1MGQwbzVvc3RpMHVwNzg2IiwiZXZlbnRfaWQiOiI0ZGYzYTM4My1jOTY3LTQ5YWQtOWY4ZC1kMDU4NGUwOTgyOWYiLCJ0b2tlbl91c2UiOiJpZCIsImF1dGhfdGltZSI6MTcxODU0OTAxMywiZXhwIjoxNzE4NTUyNjEzLCJpYXQiOjE3MTg1NDkwMTMsImp0aSI6IjFmYWQ0OWFkLWE1NTItNDZmMi04YTg3LTdhYzY2YTQyYjE1NCIsImVtYWlsIjoiYXhlbDFAZ21haWwuY29tIn0.CvZTjlSUGlYzox0mflZK3JfcHey5F0HmZyRk8Zchn2LAUL6Ra3J2ysoCpBoBNrT31yd1d57etOoEsvuVwNT14BiBnx5zUz9oqdkA_2sRy3NqahLBXkDmFB7VXmxR2LbDpVMNl4_RGPjRqfp0-jkYOegrpjf6nO4cuoHQVBlb_B_ytZu2LlWYq7W0fofmJyZh5sUk5ZE_Q2bajy8s0Z_NR4sVwTeM9LnKEUH-tOa0bp8oA2Ns0232fBG7QVyL8Run-eRRuX6HwEQTYxhEmEZsQIlt7z4Vct_S2KMLYekTt4pKU7cvkBw6d3yfL35Ov8e3ppKZn4EBytjhzgjkGL0Jvg
+GET {{url}}
+Authorization: {{jwt}}
 ###
 
-GET https://ho8l75g8qf.execute-api.us-east-2.amazonaws.com/prod/spaces?id=78294228-bbf1-41c2-92ce-4c9217d4d1db
+GET {{url}}?id=78294228-bbf1-41c2-92ce-4c9217d4d1db
+Authorization: {{jwt}}
 ###
 
 POST https://ho8l75g8qf.execute-api.us-east-2.amazonaws.com/prod/spaces
 content-type: application/json
+Authorization: {{jwt}}
 
 { "location": "MINNESOTA" }
 ###
 
 PUT https://ho8l75g8qf.execute-api.us-east-2.amazonaws.com/prod/spaces?id=7046e411-ad34-4b2d-8af4-9083782257b2
 content-type: application/json
+Authorization: {{jwt}}
 
 { "location": "LONDON" }
 ###
 
-DELETE https://ho8l75g8qf.execute-api.us-east-2.amazonaws.com/prod/spaces?id=7046e411-ad34-4b2d-8af4-9083782257b2
+DELETE https://ho8l75g8qf.execute-api.us-east-2.amazonaws.com/prod/spaces?id=79ba156b-7606-4661-9658-3d4a465bb7ad
+Authorization: {{jwt}}
 ###
 

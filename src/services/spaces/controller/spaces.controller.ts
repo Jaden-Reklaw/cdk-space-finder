@@ -4,7 +4,7 @@ import { deleteByValue, editById, findAll, findByValue, save } from "../../commo
 import { validate as validate } from "../../common/validator/validator";
 import { resposeEntity } from "../../common/model/response";
 import { deleteHeaders, getHeaders, postHeaders, putHeaders } from "../../common/util/header";
-import { createRandomId, parseJSON } from "../../common/util/util";
+import { createRandomId, hasAdminGroup, parseJSON } from "../../common/util/util";
 import { IdMismatchError, MissingBodyError, MissingFieldError, MissingQueryParamError } from "../../common/error/error";
 
 
@@ -65,7 +65,11 @@ export async function updateSpace(event: APIGatewayProxyEvent): Promise<APIGatew
 }
 
 export async function deleteSpace(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> {
-        
+    
+    console.log("event", event);
+    
+    if (!hasAdminGroup(event)) throw new Error("Not Unauthorized");
+
     validate(event.queryStringParameters, ['id'], MissingQueryParamError);
 
     await deleteByValue({id: event.queryStringParameters.id}, spacesTable);
