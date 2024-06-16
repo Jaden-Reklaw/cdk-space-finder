@@ -1,4 +1,8 @@
+
+
+
 GET https://ho8l75g8qf.execute-api.us-east-2.amazonaws.com/prod/spaces
+Authorization: 
 ###
 
 GET https://ho8l75g8qf.execute-api.us-east-2.amazonaws.com/prod/spaces?id=78294228-bbf1-41c2-92ce-4c9217d4d1db

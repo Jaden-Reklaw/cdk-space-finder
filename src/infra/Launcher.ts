@@ -1,6 +1,7 @@
 import { App } from "aws-cdk-lib";
 import { DataStack } from './stacks/DataStack'
 import { LambdaStack } from "./stacks/LambdaStack";
+import { AuthStack } from "./stacks/AuthStack";
 import { ApiStack } from "./stacks/ApiStack";
 
 const app = new App();
@@ -11,6 +12,9 @@ const lambdaStack = new LambdaStack(app, 'LambdaStack', {
     spacesTable: dataStack.spacesTable
 });
 
+const authStack = new AuthStack(app, 'AuthStack');
+
 const apiStack = new ApiStack(app, 'ApiStack', {
-    spacesLambdaIntegration: lambdaStack.spacesLambdaIntegration
+    spacesLambdaIntegration: lambdaStack.spacesLambdaIntegration,
+    userPool: authStack.userPool
 });

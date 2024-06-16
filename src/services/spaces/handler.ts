@@ -1,12 +1,6 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult, Context } from "aws-lambda";
-import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
-import { postSpaces } from "./data/postSpaces";
-import { getSpaces } from "./data/getSpaces";
-import { updateSpaces } from "./data/updateSpaces";
-import { deleteSpaces } from "./data/deleteSpaces";
-import { errorCheck } from "../error/error";
-
-const ddbClient = new DynamoDBClient({})
+import { errorCheck } from "../common/error/error";
+import { createSpaces, readSpace, readSpaces, updateSpace, deleteSpace } from "./controller/spaces.controller";
 
 export const handler = async (event: APIGatewayProxyEvent, context: Context): Promise<APIGatewayProxyResult> => {
     
@@ -14,26 +8,32 @@ export const handler = async (event: APIGatewayProxyEvent, context: Context): Pr
 
     try {
         switch (event.httpMethod) {
-            case 'GET':
-                response = await getSpaces(event, ddbClient);
-                break;
             case 'POST':
-                response = await postSpaces(event, ddbClient);
+                response = await createSpaces(event);
                 break
+            case 'GET':
+                if(event.queryStringParameters != null) {
+                    response = await readSpace(event);
+                    break;
+                } else {
+                    response = await readSpaces(event);
+                    break;
+                }
             case 'PUT':
-                response = await updateSpaces(event, ddbClient);
+                response = await updateSpace(event);
                 break;
             case 'DELETE':
-                response = await deleteSpaces(event, ddbClient);
+                response = await deleteSpace(event);
                 break;
             default:
                 break;
         }
+
         console.log(response)
         return response;
     } catch (error) {
         
-        console.log("An error occurred ---", error);
+        console.error("An error occurred ---", error);
         return errorCheck(error);
     }
 }

@@ -1,4 +1,4 @@
-export interface spacesRequest {
+export interface SpacesRequest {
     id: string,
     location: string,
     name: string,
